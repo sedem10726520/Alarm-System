@@ -1,1 +1,69 @@
+const int buzzPin = 13;
+const int ledPin = 12;
+const int prPin = A0;
+const int sensorPin = 7;
 
+int prButton = 0;
+int SENSORvalue = 0;
+int SENSORstate = LOW;
+
+void setup()
+{
+  Serial.begin(9600); 
+  pinMode(buzzPin, OUTPUT);
+  pinMode(ledPin, OUTPUT);
+  pinMode(prPin, INPUT);
+  pinMode(sensorPin, INPUT);
+  
+}
+
+void loop()
+{
+  int prButton = analogRead(prPin);
+    if (prButton >= 500)
+    {
+      tone(buzzPin, 1000);
+      digitalWrite(ledPin, HIGH);
+      delay(1000);
+      
+      noTone(buzzPin);
+      digitalWrite(ledPin, LOW);
+      delay(100);
+      
+      Serial.println("ALARM SYSTEM ACTIVE");
+    }
+    else
+    {
+      noTone(buzzPin);
+      digitalWrite(ledPin, LOW);
+      
+      Serial.println("ALARM SYSTEM INACTIVE");
+    }
+  
+  int SENSORvalue = digitalRead(sensorPin);
+    if (SENSORvalue == HIGH)
+    {
+      tone(buzzPin, 1000);
+      digitalWrite(ledPin, HIGH);
+      delay(1000);
+      
+      if (SENSORstate == LOW)
+      {
+        Serial.println("MOTION HAS BEEN DETECTED");
+        SENSORstate == HIGH;
+      }
+    }
+    else
+    {
+      noTone(buzzPin);
+      digitalWrite(ledPin, LOW);
+      delay(1000);
+        
+      if (SENSORstate == HIGH)
+      {
+        Serial.println("NO MOTION DETECTED");
+        SENSORstate == LOW;
+      }
+    
+}
+      
