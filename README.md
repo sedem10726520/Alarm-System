@@ -1,7 +1,12 @@
 # Alarm-System 
-	   The coding standards used to implement this project is the C programming language. 
-     The system configuration was implemented using the Arduino IDE.
-     The electronic components used in construction of prototype were obtained from an Arduino Tool Kit.
+
+
+
+
+
+The coding standards used to implement this project is the C programming language. 
+The system configuration was implemented using the Arduino IDE.
+The electronic components used in construction of prototype were obtained from an Arduino Tool Kit.
 
 Below are the listed components:
 
